@@ -13,7 +13,7 @@ function App() {
     const fetchExchangeRate = async () => {
       try {
         const res = await fetch(
-          `https://api.frankfurter.app/latest?from=${fromCurrency}&to=${toCurrency}`
+          `https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurrency}&to=${toCurrency}`
         );
         if (!res.ok) {
           throw new Error("Failed to fetch exchange rate");
@@ -32,7 +32,7 @@ function App() {
       }
     };
     fetchExchangeRate();
-  }, [convertedAmount, fromCurrency, toCurrency]);
+  }, [convertedAmount, fromCurrency, toCurrency, amount]);
 
   // Calculate converted amount when exchangeRate or amount changes
   useEffect(() => {
